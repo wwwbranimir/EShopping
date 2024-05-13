@@ -49,7 +49,7 @@ namespace Catalog.Infrastructure.Repositories
             
         }
 
-        public async Task<Product> GetProduct(string id)
+        public async Task<Product> GetProductById(string id)
         {
             return await _catalogContext.Products.Find(p => p.Id == id).FirstOrDefaultAsync();
            

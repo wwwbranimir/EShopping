@@ -1,29 +1,25 @@
-﻿using Catalog.Core.Repositories;
-using MongoDB.Bson;
+﻿using Catalog.Core.Entities;
+using Catalog.Core.Repositories;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MongoDB.Bson;
 
-namespace Catalog.Core.Entities
+namespace Catalog.Application.Dto
 {
-    public class Product : BaseEntity
+    public class ProductDto
     {
+
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
+        [BsonElement("Name")]
         public string Name { get; set; }
         public string Summary { get; set; }
         public string Description { get; set; }
         public string ImageFile { get; set; }
         public ProductBrand ProductBrand { get; set; }
-        public ProductType ProductType { get; set; }
+        public IBrandRepository ProductType { get; set; }
 
         [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; set; }
-      
     }
-
 }
