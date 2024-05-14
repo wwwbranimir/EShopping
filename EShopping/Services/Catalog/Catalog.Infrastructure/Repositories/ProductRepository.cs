@@ -10,8 +10,7 @@ using System.Threading.Tasks;
 
 namespace Catalog.Infrastructure.Repositories
 {
-    public class ProductRepository : IProductRepository, IBrandRepository, 
-        ITypesRepository
+    public class ProductRepository : IProductRepository, IBrandRepository,         ITypesRepository
     {
         private readonly ICatalogContext _catalogContext;
 

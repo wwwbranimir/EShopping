@@ -1,6 +1,6 @@
-@Catalog.API_HostAddress = http://localhost:5024
+@Catalog.API_HostAddress = https://localhost:9001
 
-GET {{Catalog.API_HostAddress}}/weatherforecast/
+GET {{Catalog.API_HostAddress}}/catalog/
 Accept: application/json
 
 ###
