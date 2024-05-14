@@ -1,4 +1,5 @@
-@Catalog.API_HostAddress = https://localhost:9001
+# @name Catalog.API_HostAddress
+# @default https://localhost:8081
 
 GET {{Catalog.API_HostAddress}}/catalog/
 Accept: application/json
