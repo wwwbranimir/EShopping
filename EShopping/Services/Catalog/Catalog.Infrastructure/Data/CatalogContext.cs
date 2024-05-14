@@ -18,15 +18,15 @@ namespace Catalog.Infrastructure.Data
 
         public CatalogContext(IConfiguration settings)
         {
-            //create a new instance of the MongoClient class
+           
             var client = new MongoClient(settings.GetValue<string>("DatabaseSettings:ConnectionString"));
-            //create a new instance of the IMongoDatabase interface
+          
             var database = client.GetDatabase(settings.GetValue<string>("DatabaseSettings:DatabaseName"));
-            //assign the Products, Brands, and Types collections to the corresponding collections in the database
+          
             Products = database.GetCollection<Product>(settings.GetValue<string>("DatabaseSettings:CollectionName"));
 
-            Brands = database.GetCollection<ProductBrand>(settings.GetValue<string>("DatabaseSettings:BrandsCollections"));
-            Types = database.GetCollection<ProductType>(settings.GetValue<string>("DatabaseSettings:TypesCollections"));
+            Brands = database.GetCollection<ProductBrand>(settings.GetValue<string>("DatabaseSettings:BrandsCollection"));
+            Types = database.GetCollection<ProductType>(settings.GetValue<string>("DatabaseSettings:TypesCollection"));
 
           
             //call the SeedData method to seed the database with initial data
