@@ -19,8 +19,8 @@ namespace Catalog.Application.Handlers
                 Name = request.Name, Description = request.Description,
                 Price = request.Price,
                 ImageFile = request.ImageFile,
-                ProductBrand = request.ProductBrand, 
-                ProductType = request.ProductType
+                Brands = request.Brands, 
+                Types = request.Types
             });
 
             return res;

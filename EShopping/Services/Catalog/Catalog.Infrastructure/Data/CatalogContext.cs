@@ -13,8 +13,8 @@ namespace Catalog.Infrastructure.Data
     {
         //getters for the Products, Brands, and Types collections
         public IMongoCollection<Product> Products { get; }
-        public IMongoCollection<ProductBrand> Brands { get; }
-        public IMongoCollection<ProductType> Types { get; }
+        public IMongoCollection<Brands> Brands { get; }
+        public IMongoCollection<Types> Types { get; }
 
         public CatalogContext(IConfiguration settings)
         {
@@ -25,8 +25,8 @@ namespace Catalog.Infrastructure.Data
           
             Products = database.GetCollection<Product>(settings.GetValue<string>("DatabaseSettings:CollectionName"));
 
-            Brands = database.GetCollection<ProductBrand>(settings.GetValue<string>("DatabaseSettings:BrandsCollection"));
-            Types = database.GetCollection<ProductType>(settings.GetValue<string>("DatabaseSettings:TypesCollection"));
+            Brands = database.GetCollection<Brands>(settings.GetValue<string>("DatabaseSettings:BrandsCollection"));
+            Types = database.GetCollection<Types>(settings.GetValue<string>("DatabaseSettings:TypesCollection"));
 
           
             //call the SeedData method to seed the database with initial data

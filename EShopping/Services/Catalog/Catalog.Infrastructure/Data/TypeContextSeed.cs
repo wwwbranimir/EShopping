@@ -10,15 +10,16 @@ namespace Catalog.Infrastructure.Data
 {
     public static class TypeContextSeed
     {
-        public static void SeedData(IMongoCollection<ProductType> typesCollection)
+        public static void SeedData(IMongoCollection<Types> typesCollection)
         {
             bool check = typesCollection.Find(p => true).Any();
            
             if (!check)
             {
-                string path = "../Catalog.Infrastructure/Data/SeedData/types.json";
+                // string path = "../Catalog.Infrastructure/Data/SeedData/types.json";//TODO
+                string path = Path.Combine("Data", "SeedData", "types.json");
                 var typesData = File.ReadAllText(path);
-                var types = System.Text.Json.JsonSerializer.Deserialize<List<ProductType>>(typesData);
+                var types = System.Text.Json.JsonSerializer.Deserialize<List<Types>>(typesData);
                 if (types != null)
                 {
                     typesCollection.InsertManyAsync(types);

@@ -2,6 +2,7 @@
 using Catalog.Application.Commands;
 using Catalog.Application.Dto;
 using Catalog.Core.Entities;
+using Catalog.Core.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,11 @@ namespace Catalog.Application.Mappers
     {
         public ProductMappingProfile()
         {
-            CreateMap<ProductBrand,BrandDto>().ReverseMap();
             CreateMap<Product, ProductDto>().ReverseMap();
+            CreateMap<Brands,BrandDto>().ReverseMap();
             CreateMap<Product, CreateProductCommand>().ReverseMap();
-            CreateMap<ProductType, TypeDto>().ReverseMap();
+            CreateMap<Types, TypeDto>().ReverseMap();
+            CreateMap<Pagination<Product>, Pagination<ProductDto>>().ReverseMap();
         }
     }
 }

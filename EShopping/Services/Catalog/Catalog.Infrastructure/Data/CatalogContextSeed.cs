@@ -13,7 +13,8 @@ namespace Catalog.Infrastructure.Data
         public static void SeedData(IMongoCollection<Product> productsCollection)
         {
             bool exists = productsCollection.Find(p => true).Any();
-            string path = "../Catalog.Infrastructure/Data/SeedData/products.json";
+            //string path = "../Catalog.Infrastructure/Data/SeedData/products.json"; //TODO
+            string path = Path.Combine("Data", "SeedData", "products.json");
             if (!exists)
             {
                 var data  = File.ReadAllText(path);

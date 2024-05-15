@@ -14,8 +14,8 @@ namespace Catalog.Application.Commands
         public string Summary { get; set; }
         public string Description { get; set; }
         public string ImageFile { get; set; }
-        public ProductBrand ProductBrand { get; set; }
-        public ProductType ProductType { get; set; }
+        public Brands Brands { get; set; }
+        public Types Types { get; set; }
 
         [BsonRepresentation(BsonType.Decimal128)]
         public decimal Price { get; set; }
