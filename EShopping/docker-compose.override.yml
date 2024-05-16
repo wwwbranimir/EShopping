@@ -14,7 +14,30 @@ services:
      restart: always
      ports:
        - "6379:6379"
-    
+
+   discountdb:
+     container_name: discountdb
+     environment:
+        - POSTGRES_USER=admin
+        - POSTGRES_PASSWORD=admin1234
+        - POSTGRES_DB=DiscountDb
+     restart: always 
+     ports:
+        - "5432:5432"
+     volumes:
+        - postgres_data:/var/lib/postgresql/data/
+   
+   pgadmin:
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@eShopping.net
+      - PGADMIN_DEFAULT_PASSWORD=admin1234
+    restart: always
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/root/.pgadmin
+        
    portainer:
     container_name: portainer
     restart: always
@@ -57,6 +80,20 @@ services:
       ports:
         - "8082:80"
         - "8083:443"
+
+   discount.api:
+    container_name: discount.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_HTTP_PORTS=8084
+      - ASPNETCORE_HTTPS_PORTS=8085 
+      - "DatabaseSettings__ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
+    depends_on:
+      - discountdb
+    ports:
+      - "8084:80"
+      - "8085:443"
 
 volumes:
   mongo_data:

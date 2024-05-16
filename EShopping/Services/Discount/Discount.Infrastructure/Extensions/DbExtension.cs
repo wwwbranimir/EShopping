@@ -3,11 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Npgsql;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Discount.Infrastructure.Extensions
 {
@@ -23,7 +18,6 @@ namespace Discount.Infrastructure.Extensions
                 var logger = services.GetRequiredService<ILogger<TContext>>();
                 try
                 {
-                
                     logger.LogInformation($"Discount DB migration started");
                     ApplyMigrations(configuration);
                     logger.LogInformation($"Discount DB migration completed");
@@ -32,9 +26,6 @@ namespace Discount.Infrastructure.Extensions
                 {
                     logger.LogError(ex, $"An error occurred while migrating the database used on context {typeof(TContext).Name}");
                 }
-
-
-
             }
             return host;
         }
@@ -52,7 +43,7 @@ namespace Discount.Infrastructure.Extensions
                     command.ExecuteNonQuery();
 
                     command.CommandText = @"CREATE TABLE Coupon(Id SERIAL PRIMARY KEY,
-                                                            ProductName VARCHAR(24) NOT NULL,
+                                                            ProductName VARCHAR(500) NOT NULL,
                                                             Description TEXT,
                                                             Amount INT)";
                     command.ExecuteNonQuery();
