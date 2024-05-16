@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Basket.API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class BasketController : ControllerBase
+   
+    public class BasketController : ApiController
     {
         private readonly IMediator mediatr;
 
