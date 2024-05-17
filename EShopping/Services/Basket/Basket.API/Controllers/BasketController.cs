@@ -1,5 +1,6 @@
 using Basket.Application.Commands;
 using Basket.Application.Dto;
+using Basket.Application.GrpcService;
 using Basket.Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace Basket.API.Controllers
     public class BasketController : ApiController
     {
         private readonly IMediator mediatr;
+        private readonly DiscountGrpcService discountgrpcService;
 
-        public BasketController(IMediator mediatr)
+        public BasketController(IMediator mediatr, DiscountGrpcService grpcService)
         {
             this.mediatr = mediatr;
+            this.discountgrpcService = grpcService;
         }
 
         [HttpGet]
@@ -29,6 +32,14 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(ShoppingCartDto), StatusCodes.Status200OK)]
         public async Task<ActionResult<ShoppingCartDto>> UpdateBasket([FromBody] CreateShoppingCartCommand command)
         {
+            //loop over command items and call discount grpc service
+            //using linq
+            foreach (var item in command.Items)
+            {
+                var coupon = await discountgrpcService.GetDiscount(item.ProductName);
+                item.Price -= coupon.Amount;
+            }
+
             var basket = await mediatr.Send(command);
             return Ok(basket);
           
