@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,8 +14,8 @@ namespace Catalog.Infrastructure.Data
         public static void SeedData(IMongoCollection<Product> productsCollection)
         {
             bool exists = productsCollection.Find(p => true).Any();
-            //string path = "../Catalog.Infrastructure/Data/SeedData/products.json"; //TODO
-            string path = Path.Combine("Data", "SeedData", "products.json");
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location),
+                "Data", "SeedData", "products.json");
             if (!exists)
             {
                 var data  = File.ReadAllText(path);

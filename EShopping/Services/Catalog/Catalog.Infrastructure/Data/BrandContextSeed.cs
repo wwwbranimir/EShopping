@@ -14,8 +14,8 @@ namespace Catalog.Infrastructure.Data
         public static void SeedData(IMongoCollection<Brands> productBrandCollection)
         {
             bool check = productBrandCollection.Find(p => true).Any();
-            //TODO Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Data", "SeedData", "products.json");
-            string path = Path.Combine("Data", "SeedData", "brands.json");
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location),
+                "Data", "SeedData", "brands.json");
 
             if (!check)
             {
