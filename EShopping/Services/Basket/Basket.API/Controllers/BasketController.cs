@@ -32,14 +32,6 @@ namespace Basket.API.Controllers
         [ProducesResponseType(typeof(ShoppingCartDto), StatusCodes.Status200OK)]
         public async Task<ActionResult<ShoppingCartDto>> UpdateBasket([FromBody] CreateShoppingCartCommand command)
         {
-            //loop over command items and call discount grpc service
-            //using linq
-            foreach (var item in command.Items)
-            {
-                var coupon = await discountgrpcService.GetDiscount(item.ProductName);
-                item.Price -= coupon.Amount;
-            }
-
             var basket = await mediatr.Send(command);
             return Ok(basket);
           
