@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Ordering.Application.Commands;
+using Ordering.Application.Exceptions;
 using Ordering.Application.Extensions;
 using Ordering.Core.Repositories;
 using System;
