@@ -14,7 +14,7 @@ namespace Ordering.API
                 MigrateDatabase<OrderContext>((context, services) => { 
            var logger = services.GetService<ILogger<OrderContextSeed>>();
                     OrderContextSeed.SeedAsync(context, logger).Wait();
-           });
+           }).Run();
         }
 
         private static IHostBuilder CreateHostBuilder(string[] args)
