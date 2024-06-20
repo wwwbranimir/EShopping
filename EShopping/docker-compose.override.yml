@@ -122,9 +122,11 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - ASPNETCORE_HTTP_PORTS=8086
       - ASPNETCORE_HTTPS_PORTS=8087 
-      - "DatabaseSettings__ConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=Biobihlud100%;"
+      - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=Biobihlud100%"
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - orderdb
+      - rabbitmq
     ports:
       - "8086:80"
       - "8087:443"
