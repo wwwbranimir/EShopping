@@ -91,7 +91,8 @@ services:
         - ASPNETCORE_HTTP_PORTS=8082
         - ASPNETCORE_HTTPS_PORTS=8083 
         - "CacheSettings__ConnectionString=basketdb:6379"
-        - "EventBusSettings__HostAddress=amqp://guest:guest@localhost:5672"
+        - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+        - "GrpcSettings__DiscountUrl=http://discount.api"
 
       depends_on:
           - basketdb
