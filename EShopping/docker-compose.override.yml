@@ -122,7 +122,7 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - ASPNETCORE_HTTP_PORTS=8086
       - ASPNETCORE_HTTPS_PORTS=8087 
-      - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=Biobihlud100%"
+      - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=Biobihlud100%;TrustServerCertificate=True;"
       - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - orderdb
@@ -130,6 +130,23 @@ services:
     ports:
       - "8086:80"
       - "8087:443"
+
+   ocelotapigw:
+    container_name: ocelotapigw
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development    
+      - ASPNETCORE_URLS=http://+:80
+      - ASPNETCORE_HTTP_PORTS=8088
+      - ASPNETCORE_HTTPS_PORTS=8089  
+    depends_on:
+#      - identityserver
+      - catalog.api
+      - basket.api
+      - discount.api
+      - ordering.api
+    ports:
+      - "8088:80" 
+      - "8089:443" 
 
 volumes:
   mongo_data:

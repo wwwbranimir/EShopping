@@ -9,12 +9,13 @@ namespace Ocelot.ApiGateway
 {
     public class Startup
     {
-        public void ConfigureServices(IServiceCollection services) { 
-
-            //services.AddOcelot().AddCacheManager(x => x.WithDictionaryHandle());
+        public void ConfigureServices(IServiceCollection services) {
+            services.AddOcelot();//.AddCacheManager(x => x.WithDictionaryHandle());
+           
+           
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if(env.IsDevelopment())
             {
@@ -28,7 +29,7 @@ namespace Ocelot.ApiGateway
                     await context.Response.WriteAsync("Hello Ocelot!");
                 });
             });
-            app.UseOcelot();
+            await app.UseOcelot();
         }
     }
 }
