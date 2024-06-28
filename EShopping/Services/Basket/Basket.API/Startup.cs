@@ -2,9 +2,13 @@
 using Basket.Application.Handlers;
 using Basket.Core.Repositories;
 using Discount.Grpc.Protos;
+using Google.Protobuf.WellKnownTypes;
 using HealthChecks.UI.Client;
 using MassTransit;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.OpenApi.Models;
 
@@ -49,6 +53,20 @@ namespace Basket.API
                });
 
             });
+           
+
+            var userPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+            //Identity server changes
+            services.AddControllers(config => {
+                config.Filters.Add(new AuthorizeFilter(userPolicy));
+            });
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.Authority = "https://localhost:9009";
+                    options.Audience = "Basket";
+                });
+
             //removed in mass transit version 8
             //services.AddMassTransitHostedService();
         }
@@ -60,8 +78,24 @@ namespace Basket.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1"));
             }
+          
             app.UseRouting();
-            app.UseStaticFiles();
+            app.Use(async (context, next) =>
+            {
+                var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+                if (authHeader != null)
+                {
+                    Console.WriteLine($"Authorization Header: {authHeader}");
+                }
+                else
+                {
+                    Console.WriteLine("Authorization Header missing");
+                }
+
+                await next.Invoke();
+            });
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseHttpsRedirection();
             app.UseEndpoints(endpoints =>
             {
