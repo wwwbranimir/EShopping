@@ -19,7 +19,7 @@ namespace Ocelot.ApiGateway
             {
                 options.Authority = "https://localhost:9009";
                 options.Audience = "EShoppingGateway";
-            });
+            });     
            
             services.AddOcelot();//.AddCacheManager(x => x.WithDictionaryHandle());
 
@@ -34,7 +34,7 @@ namespace Ocelot.ApiGateway
             }
            
             app.UseRouting();
-          
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>

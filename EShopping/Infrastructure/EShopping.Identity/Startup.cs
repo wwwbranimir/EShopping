@@ -52,6 +52,16 @@ namespace EShopping.Identity
 
         public void Configure(IApplicationBuilder app)
         {
+            var forwardOptions = new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = 
+                Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedFor 
+                | Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto
+            };
+            forwardOptions.KnownNetworks.Clear();
+            forwardOptions.KnownProxies.Clear();
+            app.UseForwardedHeaders(forwardOptions);
+
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

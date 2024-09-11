@@ -41,23 +41,37 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscountGrpcClient", "Servi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ordering", "Ordering", "{40CBB7A1-A4E8-40B4-B4D0-BC587A802674}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{12C3C747-5FCE-4DAA-8C83-F60C8F4E2C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.API", "Services\Ordering\Ordering.API\Ordering.API.csproj", "{12C3C747-5FCE-4DAA-8C83-F60C8F4E2C65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Core", "Services\Ordering\Ordering.Core\Ordering.Core.csproj", "{B1D82709-35B5-4388-A321-3CAB1EE78906}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Core", "Services\Ordering\Ordering.Core\Ordering.Core.csproj", "{B1D82709-35B5-4388-A321-3CAB1EE78906}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Application", "Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{A215E36A-80A1-4D64-A4B1-3C702EF9928B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Application", "Services\Ordering\Ordering.Application\Ordering.Application.csproj", "{A215E36A-80A1-4D64-A4B1-3C702EF9928B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{34E2201C-FBCE-4861-B8BB-474D2768F9C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ordering.Infrastructure", "Services\Ordering\Ordering.Infrastructure\Ordering.Infrastructure.csproj", "{34E2201C-FBCE-4861-B8BB-474D2768F9C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E81B619C-8A39-4DEA-8A54-6A5DE7713FEC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventBus.Messages", "Infrastructure\EventBus.Messages\EventBus.Messages.csproj", "{D3D690CC-8BAE-4794-BF2F-4D4E2DB584E0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{41D0EBE8-27C5-4216-8D8A-9EF74304C639}"
+	ProjectSection(SolutionItems) = preProject
+		ApiGateways\nginx\nginx.Dockerfile = ApiGateways\nginx\nginx.Dockerfile
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ocelot.ApiGateway", "ApiGateways\Ocelot.ApiGateway\Ocelot.ApiGateway.csproj", "{EF838E13-C5E4-4E19-92B0-E68F911BAA4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ocelot.ApiGateway", "ApiGateways\Ocelot.ApiGateway\Ocelot.ApiGateway.csproj", "{EF838E13-C5E4-4E19-92B0-E68F911BAA4F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EShopping.Identity", "Infrastructure\EShopping.Identity\EShopping.Identity.csproj", "{231A0C0B-749D-480F-9E3D-AD88EF5D9CF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{ACFEF232-7790-452A-B4AA-A785F60050B1}"
+	ProjectSection(SolutionItems) = preProject
+		ApiGateways\nginx\id-local.conf = ApiGateways\nginx\id-local.conf
+		ApiGateways\nginx\id-local.crt = ApiGateways\nginx\id-local.crt
+		ApiGateways\nginx\id-local.key = ApiGateways\nginx\id-local.key
+		ApiGateways\nginx\id-local.pfx = ApiGateways\nginx\id-local.pfx
+		ApiGateways\nginx\nginx.Dockerfile = ApiGateways\nginx\nginx.Dockerfile
+		ApiGateways\nginx\nginx.local.conf = ApiGateways\nginx\nginx.local.conf
+		readme.txt = readme.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -178,6 +192,7 @@ Global
 		{D3D690CC-8BAE-4794-BF2F-4D4E2DB584E0} = {E81B619C-8A39-4DEA-8A54-6A5DE7713FEC}
 		{EF838E13-C5E4-4E19-92B0-E68F911BAA4F} = {41D0EBE8-27C5-4216-8D8A-9EF74304C639}
 		{231A0C0B-749D-480F-9E3D-AD88EF5D9CF5} = {E81B619C-8A39-4DEA-8A54-6A5DE7713FEC}
+		{ACFEF232-7790-452A-B4AA-A785F60050B1} = {41D0EBE8-27C5-4216-8D8A-9EF74304C639}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D1A4227-2DB5-4E5E-AD33-74C454587C74}
