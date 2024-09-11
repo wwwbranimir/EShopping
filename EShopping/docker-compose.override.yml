@@ -11,7 +11,7 @@ services:
        - discount.api
        - ordering.api
      ports:
-       - "44344:443"
+       - "44344:44344"
 
    catalogdb:
      container_name: catalogdb
@@ -99,7 +99,7 @@ services:
       container_name: basket.api
       environment:
         - ASPNETCORE_ENVIRONMENT=Development
-        - ASPNETCORE_URLS=http://+:80
+        - ASPNETCORE_URLS=http://+:8082
         - ASPNETCORE_HTTP_PORTS=8082
         - ASPNETCORE_HTTPS_PORTS=8083 
         - "CacheSettings__ConnectionString=basketdb:6379"
