@@ -1,4 +1,4 @@
-# EShopping
+# ECommerce application wirtten in clean architecture fashion
 
 Demo for the microservices ecommerce application.
 
