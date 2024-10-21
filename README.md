@@ -4,7 +4,7 @@ Demo for the microservices ecommerce application.
 
 ## Overview
 
-This repository contains a microservices-based ecommerce application built with C#, HTML, and Docker.
+This repository contains a microservices-based ecommerce application built with C#, Angular, and Docker.
 
 ## Features
 
