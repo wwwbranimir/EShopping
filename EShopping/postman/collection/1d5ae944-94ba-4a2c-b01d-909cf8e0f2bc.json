@@ -1,0 +1,1 @@
+{"info":{"_postman_id":"1d5ae944-94ba-4a2c-b01d-909cf8e0f2bc","name":"NET-5-REST","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},"item":[{"name":"GET ITEMS","id":"49465f9f-e88d-4854-b82c-022a209586d4","protocolProfileBehavior":{"disableBodyPruning":true},"request":{"method":"GET","header":[]},"response":[]}]}
