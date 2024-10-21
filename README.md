@@ -11,6 +11,14 @@ This repository contains a microservices-based ecommerce application built with 
 - **Microservices Architecture**: Each service is independently deployable and scalable.
 - **Docker**: Containerized services for consistent development and deployment.
 - **PowerShell**: Scripts for automation and management.
+- **C# Backend**: Robust and scalable backend services built using C#.
+- **Angular Frontend**: Interactive user interfaces built with Angular.
+- **HTML & SCSS**: Clean and responsive frontend design using HTML and SCSS.
+- **TypeScript**: Type-safe JavaScript for building large-scale applications.
+- **RabbitMQ**: Messaging broker for asynchronous communication.
+- **IdentityServer**: Authentication and authorization for securing microservices.
+- **pgAdmin**: Database management for PostgreSQL.
+- **Portainer**: Docker container management.
 
 ## Getting Started
 
