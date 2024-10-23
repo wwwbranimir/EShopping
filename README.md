@@ -1,4 +1,4 @@
-# ECommerce application wirtten in clean architecture fashion
+# ECommerce application wirtten in clean architecture fashion on .NET 8.0 platform
 
 Demo for the microservices ecommerce application.
 
